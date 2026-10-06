@@ -68,11 +68,4 @@ public class Coisa {
         System.out.println(meusResumos.temResumo("Classes"));
         System.out.println(meusResumos.temResumo("Objetos"));
     }
-
-    public static class RotinaDeDescanso {
-        int horasDescansadas;
-        int semanasRegistradas;
-
-
-    }
 }
