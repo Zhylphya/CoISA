@@ -1,39 +1,61 @@
 package lab2;
 
+/**
+ * Registra e controla o tempo investido online para uma determinada disciplina.
+ *
+ * @author Vitória Galdino
+ */
 public class RegistroTempoOnline {
     private String nomeDisciplina;
+    private int tempoOnlineGasto;
     private int tempoOnlineEsperado;
-    private int tempoOnlineUsado;
 
-    // Construtor 1: Apenas o nome da disciplina (padrão de 60h de aula = 120h online esperadas)
+    /**
+     * Constrói o registro com tempo esperado padrão de 120 horas.
+     *
+     * @param nomeDisciplina Nome da disciplina.
+     */
     public RegistroTempoOnline(String nomeDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
-        this.tempoOnlineEsperado = 120; // 60 * 2 por padrão
-        this.tempoOnlineUsado = 0;
+        this(nomeDisciplina, 120);
     }
 
-    // Construtor 2: Recebe o nome e o tempo online esperado explicitamente
+    /**
+     * Constrói o registro definindo o tempo esperado.
+     *
+     * @param nomeDisciplina Nome da disciplina.
+     * @param tempoOnlineEsperado Horas esperadas online.
+     */
     public RegistroTempoOnline(String nomeDisciplina, int tempoOnlineEsperado) {
         this.nomeDisciplina = nomeDisciplina;
         this.tempoOnlineEsperado = tempoOnlineEsperado;
-        this.tempoOnlineUsado = 0;
+        this.tempoOnlineGasto = 0;
     }
 
-    // Adiciona tempo online utilizado (pode ultrapassar o tempo esperado)
+    /**
+     * Adiciona horas de estudo online para a disciplina.
+     *
+     * @param tempo Horas a adicionar.
+     */
     public void adicionaTempoOnline(int tempo) {
-        if (tempo > 0) {
-            this.tempoOnlineUsado += tempo;
-        }
+        this.tempoOnlineGasto += tempo;
     }
 
-    // Verifica se a meta de tempo foi atingida
+    /**
+     * Verifica se o aluno atingiu a meta de tempo esperada.
+     *
+     * @return true se atingiu ou ultrapassou a meta; false caso contrário.
+     */
     public boolean atingiuMetaTempoOnline() {
-        return this.tempoOnlineUsado >= this.tempoOnlineEsperado;
+        return this.tempoOnlineGasto >= this.tempoOnlineEsperado;
     }
 
-    // Retorna a representação textual do objeto
+    /**
+     * Retorna a representação textual do registro tempo online.
+     *
+     * @return String no formato "NomeDisciplina TempoGasto/TempoEsperado".
+     */
     @Override
     public String toString() {
-        return this.nomeDisciplina + " " + this.tempoOnlineUsado + "/" + this.tempoOnlineEsperado;
+        return this.nomeDisciplina + " " + this.tempoOnlineGasto + "/" + this.tempoOnlineEsperado;
     }
 }
